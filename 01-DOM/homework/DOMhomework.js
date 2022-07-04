@@ -60,22 +60,51 @@ class ToDo {
 
 function buildToDo(toDo, index) {
   // Tu código acá:
+  /**Shell */
   let toDoShell = document.createElement('div');
   toDoShell.classList.add('toDoShell');
+  /**texto */
   let toDoText = document.createElement('span');
-  toDoText.innerHTML = `${index}.- ${toDo.description}`;
-  toDoText.setAttribute('id', index);
+  toDoText.innerHTML = `${index + 1}.- ${toDo.description}`;
+  //toDoText.setAttribute('id', index);
+  //toDoText.addEventListener('click', completeToDo);
+  /**Check Box */
+  let inputCheck = document.createElement('input');
+  inputCheck.classList.add('completeCheckbox');
+  inputCheck.setAttribute('id', index);
+  inputCheck.setAttribute('type', 'checkbox');
+  inputCheck.addEventListener('click', completeToDo);
+  /**comprobacion para atributos de cada etiqueta 
+   * deacuerdo al objeto ToDo
+   */
   if (toDo.complete) {
+    inputCheck.setAttribute('checked', '')
     toDoText.classList.add('completeText');
   } else {
     if (toDoText.classList.contains('completeText')) {
       toDoText.classList.remove('completeText');
     }
+    if (inputCheck.hasAttribute('checked')) {
+      inputCheck.removeAttribute('checked')
+    }
   }
-  toDoText.addEventListener('click', completeToDo)
+  /**agregando los las etiquetas hijas el shiel */
+  toDoShell.appendChild(inputCheck);
   toDoShell.appendChild(toDoText);
+  /**retorno del shiel */
   return toDoShell;
 }
+// **********************************************EXTRA CREDITOS:********************************************** //
+
+/*    Investigá sobre el tipo 'checkbox' del elemento input y realizar lo siguiente en la función 'buildToDo':
+        a) Crer un checkbox en la función 'buildToDo'
+        b) Asignarle como id a dicho checkbox el valor del index y quitar el id del index de toDoText
+        c) Agregarle al checkbox el 'click' event listener de completeToDo y quitárle el event listener a toDoText
+        d) Asignarle la clase 'completeCheckbox' al checkbox
+        e) Dentro del bloque 'if' de la función buildToDo, si es true, setear el atributo 'checked' en true en el checkbox
+        f) Agregar el checkbox sobre el elemento 'toDoShell'
+*/
+// ********************************************** ----------- ********************************************** //
 
 // La función 'buildToDos' debe crear un array de objetos toDo y devolverlo
 // Recibirá como parámetro un array de objetos ToDo
@@ -164,14 +193,14 @@ agregar.addEventListener('click', addToDo);
 
 function completeToDo(event) {
   // DESCOMENTAR LA SIGUIENTE LINEA
-  const index = event.target.id;
+  const index = event.target;
   // Tu código acá:
   //   1) Utilizando el index suministrdo, llamar a 'completeToDo' (Recuerden que habíamos creado dcho método en el
   //      prototipo de la clase ToDo) sobre el elemento correspondiente del array toDoItems
-  if (toDoItems[index].complete) {
-    toDoItems[index].unCompleteTodo();
+  if (toDoItems[index.id].complete) {
+    toDoItems[index.id].unCompleteTodo();
   } else {
-    toDoItems[index].completeToDo();
+    toDoItems[index.id].completeToDo();
   }
   //   2) Llamar a displayToDos para actualizar los elementos que se van a mostrar en pantalla
   displayToDos();
