@@ -1,13 +1,16 @@
 // Crear un array vacío llamado 'toDoItems'
 // Tu codigo acá:
 
+var toDoItems = [];
 
 // En la página 'index.html' hay un elemento span cuyo texto es 'Aplicación creada por:'.
 // Usando querySelector seleccionar dicho span por su id ('createdBy') y luego usando innerHTML
 // agregar tu nombre al final del texto actual. Ej: 'Aplicación creada por Franco'
 // Tu código acá:
 
-
+var nombreCreador = document.querySelector('#createdBy');
+var inHTML = nombreCreador.innerHTML;
+nombreCreador.innerHTML = `<p> ${inHTML} Miguel Angel PM</p>`
 
 // Crear una clase denominada 'ToDo' cuyo constructor debe recibir un único parámetro del tipo string
 // con el nombre 'description' que será justamente la descripción del ToDo.
@@ -16,19 +19,26 @@
 // 2) 'complete'    : debe setearse en false
 // Ayuda: usar 'this' en el constructor
 
-function ToDo () {
+class ToDo {
+  // Tu código acá:
+  constructor(desc) {
+    this.description = desc;
+    this.complete = false;
+  }
+  // Agregar un método denominado 'completeToDo' al prototipo de la clase ToDo
+  // No requiere ningún argumento
+  // Debe setear el atributo 'complete' del ToDo en true
+
   // Tu código acá:
 
+  completeToDo() {
+    this.complete = true;
+  }
+  /**Marcar como incompleta la tarea */
+  unCompleteTodo() {
+    this.complete = false;
+  }
 }
-
-
-// Agregar un método denominado 'completeToDo' al prototipo de la clase ToDo
-// No requiere ningún argumento
-// Debe setear el atributo 'complete' del ToDo en true
-
-// Tu código acá:
-
-
 
 // Agregar dos parámetros a la función 'buildToDo':
 //    1) Un objeto de la clase ToDo
@@ -48,9 +58,23 @@ function ToDo () {
 //    8) Devolver la variable toDoShell
 
 
-function buildToDo(todo, index) {
+function buildToDo(toDo, index) {
   // Tu código acá:
-
+  let toDoShell = document.createElement('div');
+  toDoShell.classList.add('toDoShell');
+  let toDoText = document.createElement('span');
+  toDoText.innerHTML = `${index}.- ${toDo.description}`;
+  toDoText.setAttribute('id', index);
+  if (toDo.complete) {
+    toDoText.classList.add('completeText');
+  } else {
+    if (toDoText.classList.contains('completeText')) {
+      toDoText.classList.remove('completeText');
+    }
+  }
+  toDoText.addEventListener('click', completeToDo)
+  toDoShell.appendChild(toDoText);
+  return toDoShell;
 }
 
 // La función 'buildToDos' debe crear un array de objetos toDo y devolverlo
@@ -60,7 +84,14 @@ function buildToDo(todo, index) {
 
 function buildToDos(toDos) {
   // Tu código acá:
-
+  var arrayToDo = [];
+  let count = 0;
+  toDos.map(toDo => {
+    let newToDo = buildToDo(toDo, count)
+    ++count;
+    arrayToDo.push(newToDo);
+  });
+  return arrayToDo
 }
 
 
@@ -75,7 +106,12 @@ function buildToDos(toDos) {
 
 function displayToDos() {
   // Tu código acá:
-
+  var toDoContainer = document.querySelector('#toDoContainer');
+  toDoContainer.innerHTML = '';
+  let allToDo = buildToDos(toDoItems);
+  allToDo.forEach(item => {
+    toDoContainer.appendChild(item);
+  });
 }
 
 
@@ -90,7 +126,16 @@ function displayToDos() {
 
 function addToDo() {
   // Tu código acá:
-
+  //  1) Crear un nuevo ToDo usando la clase ToDo y pasándole el valor del input 'toDoInput' como parámetro
+  let input = document.querySelector('#toDoInput');
+  if (input.value !== '') {
+    let newItem = new ToDo(input.value);
+    //  2) Agregar el objeto ToDo recién creado al array toDoItems
+    toDoItems.push(newItem);
+    //  3) Setear el valor del input toDoInput como un string vacio ("") (Esto se realiza para que en la vista se borre lo que se encontraba escrito)
+    input.value = '';
+  }
+  displayToDos();
 }
 
 // Agregar un 'Event Listener' para que cada vez que el botón 'AGREGAR' sea clickeado
@@ -100,6 +145,10 @@ function addToDo() {
 
 // Tu código acá:
 
+//   1) Seleccionar el elemento cuyo id es 'addButton'
+var agregar = document.querySelector('#addButton');
+//   2) Agregarle un 'click' event listener, pasándole la función 'addToDo' como callback
+agregar.addEventListener('click', addToDo);
 
 // La función completeToDo se va a ejecutar cuando queramos completar un todo
 // [NOTA: Algunas cuestiones a tener en cuenta
@@ -115,9 +164,19 @@ function addToDo() {
 
 function completeToDo(event) {
   // DESCOMENTAR LA SIGUIENTE LINEA
-  // const index = event.target.id;
+  const index = event.target.id;
   // Tu código acá:
-
+  //   1) Utilizando el index suministrdo, llamar a 'completeToDo' (Recuerden que habíamos creado dcho método en el
+  //      prototipo de la clase ToDo) sobre el elemento correspondiente del array toDoItems
+  if (toDoItems[index].complete) {
+    toDoItems[index].unCompleteTodo();
+  } else {
+    toDoItems[index].completeToDo();
+  }
+  //   2) Llamar a displayToDos para actualizar los elementos que se van a mostrar en pantalla
+  displayToDos();
+  //   3) En la función 'buildToDo' agregar un 'click' event listener al elemento 'toDoText', pasándole
+  //      esta función como callback
 }
 
 // Una vez que llegaste a este punto verificá que todos los tests pasen
@@ -138,7 +197,7 @@ function completeToDo(event) {
 
 // Acá debes insertar la llamada a 'displayToDos'
 
-
+displayToDos();
 // ---------------------------- NO CAMBIES NADA DE ACÁ PARA ABAJO ----------------------------- //
 if (typeof module !== 'undefined') {
   module.exports = {
