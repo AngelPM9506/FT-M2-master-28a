@@ -1,1 +1,40 @@
 // Mixins acá
+//phone
+.phone(@content){
+    @media (min-width: @phone){
+        @content();
+    }
+}
+//desktop
+.desktop(@content){
+    @media (min-width: @desktop){
+        @content();
+    }
+}
+//Boton
+.btn(@colorFont, @colorBg){
+    cursor: pointer;
+    background: @colorBg;
+    color: @colorFont;
+    border-radius: 0.8rem;
+    margin: 0 auto;
+    margin-bottom: 0;
+    padding: 1.5rem 3rem;
+    text-align: center;
+    transition-property: all;
+    transition-duration: 0.3s;
+    width: 100%;
+    &:hover{
+        border-radius: 2px solid darken(@colorBg, 60%);
+        background: lighten(@colorBg, 15%);
+    }
+    .phone({
+        width: auto;
+    });
+}
+//grid
+.grid(@colums, @gap){
+    display: grid;
+    gap: @gap;
+    grid-template-columns: repeat(@colums, 1fr);
+}

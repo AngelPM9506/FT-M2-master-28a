@@ -1,75 +1,138 @@
 // Conteindo del Home
 
 .home {
+  padding: 1rem 0;
 
-  .intro {
-
+  .nueva-tecnologia {
+    padding: 0 1rem;
     h2 {
-      padding: 15px;
+      font-size: 2.4rem;
+      margin: 0 1rem 1rem 0;
+      padding: 0.15rem;
     }
 
     p {
-      padding:0 15px;
+      font-size: 1.4rem;
+      margin: 0;
+      padding: 0 0.15rem;
     }
-
+    .phone({
+      padding: 0 2rem;
+      h2{
+        font-size: @h2;
+      }
+      p{
+        font-size: @fp;
+      }
+    });
   }
 
   .music-images {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     width: 100%;
-
-    img {
-      width: 28%;
-      margin: 20px 2.5%;
-      border-radius: 20px;
+    padding: 0 1rem;
+    padding-top: 3rem;
+    .phone({
+      padding: 3rem;
+      padding-bottom: 0;
+      .grid(3,4rem);
+    });
+    img{
+      display: none;
+      .phone({
+        display: block;
+        position: relative;
+        width: 100%;
+        border-radius: 2rem;
+        height: 100%;
+      });
+    }
+    img:nth-of-type(1) {
+      display: block;
+      position: relative;
+      width: 100%;
+      border-radius: 2rem;
       height: 100%;
     }
   }
 
   .musica-nueva {
-    padding: 15px;
-
+    padding: 0 1rem;
+    margin-top: 3rem;
+    padding-bottom: 3rem;
     h3 {
-      margin-top: 11px;
+      font-weight: normal;
+      font-size: 2rem;
+      margin-top: 1.1rem;
     }
 
     p {
-      margin-top: 13px;
+      font-size: 1.4rem;
+      margin-top: 1.3rem;
     }
+    .phone({
+      padding: 0 2rem;
+      margin-top: 1rem;
+      margin-bottom: 5rem;
+      h3{
+        font-size: @h3;
+      }
+      p{
+        font-size: @fp;
+      }
+    });
   }
 
   .actual {
-    margin-top: 60px;
+    margin-top: 1rem;
+    padding: 1rem;
     border-top: 1px solid @main-border-color;
-    padding: 50px 60px;
     display: flex;
-    justify-content: center;
+    flex-direction: column-reverse;
 
     .actual-text {
-      width: 50%;
+      width: 100%;
 
       h3 {
-        margin-bottom: 10px;
+        font-weight: normal;
+        font-size: 2rem;
+        margin: 1rem 0;
       }
 
       p {
-        margin-bottom: 26px;
+        margin-bottom: 2.6rem;
       }
 
       .btn {
+        width: 100%;
+        button{
+          .btn(@wild-sand,@btn-bg-color);
+        }
       }
+      .phone({
+        h3{
+          font-size: @h3;
+        }
+        p{
+          font-size: @fp;
+        }
+      });
     }
 
     .actual-img {
-      width: 46%;
-      margin-left: 4%;
+      width: 100%;
 
       img {
         width: 100%;
         height: auto;
-        border-radius: 10px;
+        border-radius: 1rem;
       }
     }
+    .phone({
+      padding: 5rem;
+      padding-bottom: 2.5rem;
+      .grid(2, 2rem);
+    });
   }
 }

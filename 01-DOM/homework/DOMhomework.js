@@ -116,11 +116,11 @@ function buildToDos(toDos) {
   var arrayToDo = [];
   let count = 0;
   toDos.map(toDo => {
-    let newToDo = buildToDo(toDo, count)
+    let newToDo = buildToDo(toDo, count);
     ++count;
     arrayToDo.push(newToDo);
   });
-  return arrayToDo
+  return arrayToDo;
 }
 
 
@@ -214,7 +214,7 @@ function completeToDo(event) {
 // **********************************************EXTRA CREDITOS:********************************************** //
 
 /*    Investigá sobre el tipo 'checkbox' del elemento input y realizar lo siguiente en la función 'buildToDo':
-        a) Crer un checkbox en la función 'buildToDo'
+        a) Crear un checkbox en la función 'buildToDo'
         b) Asignarle como id a dicho checkbox el valor del index y quitar el id del index de toDoText
         c) Agregarle al checkbox el 'click' event listener de completeToDo y quitárle el event listener a toDoText
         d) Asignarle la clase 'completeCheckbox' al checkbox
