@@ -55,12 +55,17 @@ app.get("/amigos", (req, res) => {
   res.status(200).json(amigos);
 });
 
-app.get("/amigos/:id", function(req, res)  {
-  const {id} = req.params;
+app.get("/amigos/:id", function (req, res) {
+  const { id } = req.params;
   let friendIndex = amigos.findIndex(friend => friend.id == id);
   var friend = amigos[friendIndex]
-  console.log(res.status)
-  res.status(200).json(friend);
+  if (friend !== undefined) {
+    console.log(res.status)
+    res.status(200).json(friend);
+  } else {
+    //console.log(res.status(200))
+    res.status(400).json({message: 'Amigo no encontrado intanta de nuevo, verifica el index en la lista de amigos'});
+  }
 });
 
 app.post("/amigos", (req, res) => {

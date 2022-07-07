@@ -1,28 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+  <link rel="shortcut icon" href="./img/henry.png" type="image/x-icon">
+  <link rel="stylesheet" href="css/app.css">
   <title>HomeWork Ajax</title>
 </head>
+
 <body>
-  <button id='boton'>Ver Amigos</button>
-  <ul id='lista'>
-  </ul>
+  <header>
+    <h1>Ajax con busqueda de amigos</h1>
+  </header>
+  <main>
+    <section id="ver-amigos" class="section">
+      <h2>Lista de amigos Amigos</h2>
+      <article>
+        <img src='https://upload.wikimedia.org/wikipedia/commons/c/c7/Loading_2.gif' id="img-searching"/>
+        <!--button id='see-friend'>Ver Amigos</button-->
+      </article>
+      <article class="lista-amigos article">
+        <ul id='lista'></ul>
+      </article>
+    </section>
+    <section id="buscar-amigos" class="section">
+      <h2>Buscar Amigos</h2>
+      <div class="acciones">
+        <div id="alerta"></div>
+        <input id='input-search' type="number" name="name" placeholder="El indice del amigo que buscas"></input>
+        <button class="btn" id='search-firend'>Buscar</button>
+      </div>
+      <article id="amigo" class="amigo article"></article>
+    </section>
+    <section id="eliminar-amigos" class="section">
+      <h2>Eliminar Amigos</h2>
+      <div class="acciones">
+        <input id='input-delete' type="number" name="name" placeholder="El indice del amigo vas a eliminar"></input>
+        <button class="btn" id='delete-friend'>Delete</button>
+      </div>
+      <article id='message' class="article"></article>
+    </section>
+  </main>
+  <footer>
 
-  <h2>Ver Amigos</h2>
-  <img src='https://upload.wikimedia.org/wikipedia/commons/c/c7/Loading_2.gif' />
-  <hr>
-  <input id='input'></input>
-  <button id='search'>Buscar</button>
-  <span id='amigo'></span>
-
-  <hr>
-  <input id='inputDelete'></input>
-  <button id='delete'>Delete</button>
-  <span id='success'></span>
-  <script src="index.js"></script>
+  </footer>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="./js/index.js"></script>
 </html>
