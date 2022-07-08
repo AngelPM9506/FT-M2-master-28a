@@ -1,9 +1,10 @@
-(function () {
-
-  window.EventEmitter = EventEmitter;
-
+/**lo que retorno es
+  * window.EventEmitter = EventEmitter;
+  * ...
+ */
   // our EventEmitter constructor function
-  function EventEmitter () {
+  /**se exporta directamente la clase que se genera */
+  export function EventEmitter () {
     this.subscribers = {};
   }
 
@@ -42,5 +43,3 @@
     });
 
   };
-
-})();
