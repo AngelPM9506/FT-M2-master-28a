@@ -2,7 +2,7 @@
 @use '../base/mixins' as m;
 
 .search-bar{
-    text-align: center;
+    text-align: right;
     input:not([type="submit"]){
         flex: 1;
         margin: 0.5rem;

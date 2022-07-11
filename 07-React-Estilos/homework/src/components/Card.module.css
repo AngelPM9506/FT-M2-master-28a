@@ -1,0 +1,43 @@
+.card{
+    text-align: center;
+    margin: 1rem auto;
+    padding: 1rem;
+    max-width: 30rem;
+    background: rgba(89, 117, 157, 20%);
+    border-radius: 1rem;
+    border: 1px solid rgb(225, 225, 225);
+    box-shadow: 0px 0px 15px 6px rgba(0,0,0,0.10);
+}
+.cardHeader{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.closeCard{
+    background-color: rgb(255, 0, 0);
+    padding: 0.25rem 0.25rem;
+    color: rgb(255, 255, 255);
+    font-size: 1.6rem;
+    display: inline-block;
+    font-weight: normal;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 0.5rem;
+    transition-property: all;
+    transition-duration: .3s;
+    text-align: center;
+    display: block;
+    width: auto;
+    margin: 0;
+    padding: 0.25rem 0.50rem;
+}
+.closeCard:hover {
+    background-color: darken( rgb(255, 0, 0), 10% );
+    cursor: pointer;
+}
+h2{
+    font-weight: 700;
+}
+.datos{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1rem;
+}
