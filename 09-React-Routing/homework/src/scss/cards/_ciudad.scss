@@ -1,0 +1,40 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.ciudad{
+    .infoCiudad{
+        background: rgba(v.$lapislazuli, 30%);
+        border-radius: 1rem;
+        padding: 2rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 auto;
+        width: 70%;
+        .info{
+            width: 70%;
+            .dato{
+                display: flex;
+                justify-content:space-between;
+                align-items: center;
+                font-weight: bold;
+                margin: 1rem 0;
+                border-bottom: 2px dotted lighten(v.$verde, 50%);
+                width: auto;
+                p{
+                    margin: 0;
+                }
+                span{
+                    color: lighten(v.$verde, 50%);
+                }
+            }
+        }
+    }
+    picture{
+        width: 20%;
+        img{
+            width: 100%;
+        }
+    }
+}

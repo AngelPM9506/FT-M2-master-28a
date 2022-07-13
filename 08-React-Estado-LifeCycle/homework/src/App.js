@@ -22,7 +22,7 @@ function App() {
   );
   /**funcion para eliminar una ciudad */
   function onClose(id) {
-    setCities(oldCities => oldCities.filter(city => city.id != id));
+    setCities(oldCities => oldCities.filter(city => city.id !== id));
   }
   /**funcion para agregar ciudades */
   function onSearch(ciudad) {

@@ -1,0 +1,50 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.card{
+    text-align: center;
+    margin: 1rem auto;
+    padding: 1rem;
+    max-width: 30rem;
+    background: rgba(v.$lapislazuli, 40%) ;
+    border-radius: 1rem;
+    //border: 1px solid lighten(v.$gris, 30%);
+    box-shadow: 0px 0px 15px 6px rgba(0,0,0,0.10);
+    min-width: 100%;
+    transition-property: all;
+    transition-duration: 0.3s;
+    &:hover{
+        scale: 1.1;
+        background: rgba(v.$lapislazuli, 80%) ;
+    }
+    .cardHeader{
+        display: flex;
+        flex-direction: row-reverse;
+        .closeCard{
+            @include m.boton(v.$navy, v.$blanco);
+            margin: 0;
+            padding: 0.25rem 0.50rem;
+        }
+    }
+    .cardTitle{
+        display: flex;
+        align-items: center;
+    }
+    h2{
+        color: v.$grisClaro;
+        margin: 0.5rem auto;
+        font-size: 3rem;
+        font-weight: 700;
+    }
+    .datos{
+        @include m.grid(3, 2rem);
+        span{
+            color: v.$grisClaro;
+            font-size: 1.7rem;
+        }
+        p{
+            color: v.$blanco;
+            font-weight: bold;
+        }
+    }
+}

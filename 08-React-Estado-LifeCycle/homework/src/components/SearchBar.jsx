@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import Alerta from './Alerta';
+//import Alerta from './Alerta';
 
 class SearchBar extends Component {
   state = {

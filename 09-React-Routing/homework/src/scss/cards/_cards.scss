@@ -1,0 +1,20 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.cards{
+    margin: 1rem;
+    padding: 0.5rem;
+    @include m.tablet{
+        @include m.grid(3, 2rem);
+    }
+}
+.noCards{
+    margin: 3rem auto;
+    text-align: center;
+    background: rgba(255, 0 , 0, 30%);
+    h3{
+        margin: 1rem auto;
+        padding: 1rem;
+        border-bottom: 1px solid v.$negro;
+    }
+}
