@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import Counter from './components/Counter';
-import counter from './reducers';
+import counter from './reducers/index';
 
 // Esta línea instancia nuestro store central de Redux.
 // La función `createStore` recibe el reducer
