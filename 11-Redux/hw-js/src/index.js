@@ -26,13 +26,14 @@ const incrementoBtn = document.querySelector('#incremento');
 const decrementoBtn = document.querySelector('#decremento');
 const incrementoImparBtn = document.querySelector('#incrementoImpar');
 const incrementoAsyncBtn = document.querySelector('#incrementoAsync');
+/**Acciones por cada boton */
 
 incrementoBtn.addEventListener('click', () => store.dispatch(incremento()));
 
 decrementoBtn.addEventListener('click', () => store.dispatch(decremento()));
 
 incrementoImparBtn.addEventListener('click', () => {
-  if (store.getState().contador % 2 === 0) {
+  if (store.getState().contador % 2 !== 0) {
     store.dispatch(incremento());
   }
 });

@@ -1,17 +1,22 @@
+/**Dependencias de react */
 import React from 'react';
 import ReactDOM from 'react-dom';
+/**Los estilos */
 import './index.css';
+/**componenetes */
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
 import { BrowserRouter } from 'react-router-dom';
-//import { Provider } from "react-redux";
-//import store from "./store/index";
+/**partes para el store */
+import { Provider } from "react-redux";
+import store from "./store/index";
 
 ReactDOM.render(
+  <Provider store={store}>
     <BrowserRouter>
       <App />
-    </BrowserRouter>,
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root')
 );
 

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from 'react-router-dom';
+import LiMovie from "../LiMovie/LiMovie";
+import { getMovies, addMovieFavorite } from "../../actions";
 import './Buscador.css';
 
 
@@ -12,13 +13,19 @@ export class Buscador extends Component {
       title: ""
     };
   }
+
   handleChange(event) {
     this.setState({ title: event.target.value });
   }
+
   handleSubmit(event) {
     event.preventDefault();
+    this.props.getMovies(this.state.title);
   }
 
+  addFavorite = movie => {
+    this.props.addMovieFavorite(movie);
+  }
   render() {
     const { title } = this.state;
     return (
@@ -38,11 +45,34 @@ export class Buscador extends Component {
           <button type="submit">BUSCAR</button>
         </form>
         <ul>
-         {/* Aqui tienes que escribir tu codigo para mostrar la lista de peliculas */}
+          {this.props.movies.map((movie, i) => {
+            return (<LiMovie
+              key={i}
+              movie={movie}
+              addFav={this.addFavorite}
+            />)
+          })}
         </ul>
       </div>
     );
   }
 }
 
-export default Buscador;
+function mapStateToProps(state) {
+  return {
+    fav: state.moviesFavourites,
+    movies: state.moviesLoaded
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addMovieFavorite: movie => dispatch(addMovieFavorite(movie)),
+    getMovies: title => dispatch(getMovies(title))
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Buscador);

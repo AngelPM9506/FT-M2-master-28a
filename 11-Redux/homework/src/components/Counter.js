@@ -7,7 +7,7 @@ class Counter extends Component {
     // Extra Credit
     incrementIfOdd = () => {
       //Implementar una función de incremento que sólo aumenta si el valor del contador es impar
-      if (this.props.count % 2 === 0) {
+      if (this.props.count % 2 !== 0) {
         this.props.increment();
       }
     };
