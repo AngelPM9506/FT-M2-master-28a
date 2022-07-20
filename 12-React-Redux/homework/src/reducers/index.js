@@ -2,7 +2,8 @@ import {
     GETMOVIES,
     GETMOVIEDETAIL,
     ADDMOVIEFAVORITE,
-    REMOVEMOVIEFAVORITE
+    REMOVEMOVIEFAVORITE,
+    REMOVEMOVIEDETAIL
 } from '../actions'
 const initialState = {
     moviesFavourites: [],
@@ -31,6 +32,11 @@ export default (state = initialState, action) => {
             return ({
                 ...state,
                 movieDetail: action.payload
+            });
+        case REMOVEMOVIEDETAIL:
+            return({
+                ...state,
+                movieDetail: {}
             });
         default:
             return state;

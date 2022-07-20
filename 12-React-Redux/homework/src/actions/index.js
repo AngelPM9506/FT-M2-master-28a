@@ -2,6 +2,7 @@ export const GETMOVIES = 'GET_MOVIES';
 export const GETMOVIEDETAIL = 'GET_MOVIE_DETAIL';
 export const ADDMOVIEFAVORITE = 'ADD_MOVIE_FAVORITE';
 export const REMOVEMOVIEFAVORITE = 'REMOVE_MOVIE_FAVORITE';
+export const REMOVEMOVIEDETAIL = 'REMOVE_MOVIE_DETAIL';
 
 export const getMovies = (value) => {
     return function (dispatch) {
@@ -26,4 +27,7 @@ export const addMovieFavorite = (value) => {
 }
 export const removeMovieFavorite = (value) => {
     return { type: REMOVEMOVIEFAVORITE, payload: value };
+}
+export const removeMovieDetail = () => {
+    return { type: REMOVEMOVIEDETAIL };
 }

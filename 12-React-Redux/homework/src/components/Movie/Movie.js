@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getMovieDetail } from '../../actions/index';
+import { getMovieDetail, removeMovieDetail } from '../../actions/index';
 
 import './Movie.scss';
 
@@ -10,6 +10,9 @@ class Movie extends React.Component {
     componentWillMount() {
         const { match: { params: { id } } } = this.props;
         this.props.getMovieDetail(id);
+    }
+    componentWillUnmount(){
+        this.props.removeMovieDetail();
     }
     render() {
         return (
@@ -76,7 +79,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        getMovieDetail: movie => dispatch(getMovieDetail(movie))
+        getMovieDetail: movie => dispatch(getMovieDetail(movie)),
+        removeMovieDetail: () => dispatch(removeMovieDetail())
     };
 }
 
