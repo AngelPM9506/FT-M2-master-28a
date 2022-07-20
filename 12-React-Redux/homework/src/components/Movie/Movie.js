@@ -55,6 +55,10 @@ class Movie extends React.Component {
                         <p>Awards</p>
                         <span>{this.props.details.Awards}</span>
                     </div>
+                    <div className='dato'>
+                        <p>Rated</p>
+                        <span>{this.props.details.Rated}</span>
+                    </div>
                 </div>
                 <div className='description'>
                     <picture>
