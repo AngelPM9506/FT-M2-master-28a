@@ -1,15 +1,10 @@
-.card{
-    color: black;
-}
 .cnt {
     padding-top: 10px;
 }
 .form-container {
     display:flex;
     flex-direction: row;
-    align-items: center;
-
-    margin: 1rem;
+    align-items: flex-start;
 }
 
 .form-container button {
@@ -18,11 +13,8 @@
 .label {
     padding-right: 10px;
 }
-.btn{
-    margin: 0.2rem 1rem;
-}
+
 .btn2{
-    margin: 0 1.5rem;
     background-color: yellow;
     position: relative;
 }

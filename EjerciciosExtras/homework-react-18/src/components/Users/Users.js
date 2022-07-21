@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
-import { getAllUsers } from '../../actions/index';
+import { get_all_users } from '../../actions/index';
 import './Users.css';
 
-export class Users extends Component {
-  componentDidMount() {
-    this.props.getAllUsers();
+class Users extends Component {
+  componentDidMount(){
+    this.props.get_all_users();
   }
+
   render() {
     return (
       <div className="details">
@@ -23,9 +24,9 @@ export class Users extends Component {
           </thead>
           <tbody>
             {
-              this.props.users.map((usuario, i) => {
-                return (
-                  <tr key={i}>
+              this.props.users.map((usuario) => {
+                return(
+                  <tr>
                     <th>{`${usuario.name} ${usuario.surname}`}</th>
                     <th>{`${usuario.email}`}</th>
                     <th><Link to={`/users/${usuario.id}/posts`} className="button">Posts</Link></th>
@@ -39,12 +40,16 @@ export class Users extends Component {
     );
   }
 }
-export const mapStateToProps = state => {
-  return { users: state.users };
-}
 
-export const mapDispatchToProps = dispatch => {
-  return { getAllUsers: () => dispatch(getAllUsers()) }
+const mapStateToProps = state => {
+  return {
+    users: state.users
+  };
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    get_all_users: () => dispatch(get_all_users())
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Users);

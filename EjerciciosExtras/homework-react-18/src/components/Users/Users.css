@@ -2,26 +2,22 @@
     padding-top: 10px;
 }
 
-table,
-th,
-td {
+table, th, td {
     border: 1px solid black;
     width: 50%;
     text-align: center;
-
+   
     padding: 1em;
-}
-table{
-    margin: 1rem auto;
-}
+  }
 
-.header {
+.header{
     background-color: yellow;
-}
+}  
 
 .button {
+    
     background-color: #555555;
     border: 1px solid rgb(158, 143, 143);
     color: #fff;
-    text-decoration: none;
+    text-decoration:none;
 }

@@ -5,11 +5,7 @@
 }
 
 .container {
-  text-align: center;
-  margin: 1rem auto;
-  padding: 1.5rem;
-  color: lightgray;
-  width: 50%;
+  width: 40%;
   height: 20%;
   background: #4d4d4d;
   border-radius: 5px;
@@ -17,8 +13,6 @@
 }
 
 .btn{
-  margin: 1rem 2rem;
-  padding: 0.5rem 1rem;
   background-color: grey;
   border-radius: 1em;
 }
@@ -26,18 +20,15 @@
   text-decoration: none;
 }
 .details {
-  padding: 1rem;
+  padding: 50px 0 0 50px;
 }
 
-.title,
-.title-post {
+.title {
     color: black;
-    font-size: 2rem;
+    font-size: 40px;
     margin-bottom: 13px;
     line-height: normal;
     position: relative;
 }
-.title-post{
-  color: lightgray;
-}
+
 
